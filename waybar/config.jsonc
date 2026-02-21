@@ -1,0 +1,208 @@
+/* overstuffed waybar
+   github.com/suyef */
+{
+  "layer": "bottom",
+  "position": "bottom",
+  "height": 30,
+  "reload_style_on_change": true,
+  "modules-left": [
+    "custom/logo",
+    "hyprland/workspaces",
+    "hyprland/window"
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "disk",
+    "cpu",
+    "temperature",
+    "memory",
+    /*"backlight", TODO: FIX THIS*/
+    "pulseaudio",
+    "network",
+    "power-profiles-daemon",
+    "battery",
+    "idle_inhibitor",
+    "clock",
+    "custom/power_menu"
+  ],
+  "custom/logo": {
+    "format": " ", /* arch is dead */
+    "tooltip": false,
+    "on-click": "rofi -show drun"
+  },
+  "custom/power_menu": {
+    "format": "⏻ ",
+    "on-click": "exec wlogout",
+    "tooltip": false
+  },
+  "network": {
+    "format-wifi": "|  {essid} ({signalStrength}%)",
+    "format-ethernet": " ",
+    "format-disconnected": "",
+    "tooltip-format": "{ipaddr}",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)  | {ipaddr}",
+    "tooltip-format-ethernet": "{ifname} 🖧 | {ipaddr}",
+    "on-click": "nm-connection-editor" /* TODO: create wifi thingy*/
+  },
+  "pulseaudio": {
+    "format": "|{icon} {volume}%",
+    "format-bluetooth": "󰂰",
+    "format-muted": "<span font='12'>󰖁</span>",
+    "format-icons": {
+      "headphones": "",
+      "bluetooth": "󰥰",
+      "handsfree": "",
+      "headset": "󱡬",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ]
+    },
+    "justify": "center",
+    "on-click": "amixer sset Master toggle",
+    "on-click-right": "pavucontrol",
+    "tooltip-format": "{icon}  {volume}%"
+  },
+  "battery": {
+    "states": {
+      "good": 75, /* important to only charge to 80% to preserve your battery */
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "|{icon} {capacity}%",
+    "format-charging": "|+{capacity}%",
+    "format-plugged": "|B:{capacity}%",
+    "format-alt": "|B:{time} ",
+    "format-icons": [
+      "▁",
+      "▃",
+      "▄",
+      "▆",
+      "█"
+    ]
+  },
+  "backlight": { /* none of this works*/
+    "device": "intel_backlight",
+    "format": " {backlight}%",
+    "on-scroll-down": "brightnessctl set +10%",
+    "on-scroll-up": "brightnessctl set 10%-",
+    "smooth-scrolling-threshold": 1
+  },
+  "hyprland/language": { /* this doesnt work either */
+    "format-en": "US",
+    "format-intl": "INTL",
+    "on-click": "hyprctl keyword input:kb_layout intl",
+    "on-click-right": "hyprctl keyword input:kb_layout us"
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": { /* i am not chinese */
+      "1": "一",
+      "2": "二",
+      "3": "三",
+      "4": "四",
+      "5": "五",
+      "6": "六",
+      "7": "七",
+      "8": "八",
+      "9": "九",
+      "10": "十"
+    },
+    "on-click": "activate",
+    "all-outputs": true,
+    "active-only": false,
+    "show-special": false,
+    "persistent-only": false,
+    "persistent-workspaces": {
+      "*": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    }
+  },
+  "hyprland/window": {
+    "format": "({title})",
+    "max-length": 80,
+    "separate-outputs": true
+  },
+  "cpu": {
+    "interval": 1,
+    "format": "| {usage}%",
+    "min-length": 6,
+    "max-length": 6
+  },
+  "power-profiles-daemon": {
+    "format": "|{icon}",
+    "tooltip-format": "Power profile: {profile}nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "default",
+      "performance": "󱀚 spd",
+      "balanced": "󰗑 bal",
+      "power-saver": "󰌪 eco"
+    }
+  },
+  "clock": {
+    "format-alt": "{:%a}-{:%d} | {:%I}:{:%M}",
+    "format": "{:%a-%d | %I:%M}",
+    "timezones": [
+      "America/Los_Angeles"
+    ],
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#a6e3a1'><b>{}</b></span>",
+        "days": "<span color='#cdd6f4'>{}</span>",
+        "weeks": "<span color='#74c7ec'><b>W{}</b></span>",
+        "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
+        "today": "<span background='#f38ba8' color='#1e1e2e'><b>{}</b></span>"
+      }
+    },
+    "actions": {
+      "on-click": "tz_up",
+      "on-click-right": "tz_down",
+      "on-click-forward": "shift_up",
+      "on-click-backward": "shift_down",
+      "on-click-middle": "mode"
+    }
+  },
+  "memory": {
+    "interval": 5,
+    "format": "| {percentage}%",
+    "format-alt-click": "click"
+  },
+  "disk": {
+    "interval": 30,
+    "format": "| {percentage_used}%",
+    "path": "/"
+  },
+  "temperature": {
+    "format": "|{temperatureC}°C",
+    "format-critical": "|{temperatureC}°C",
+    "interval": 1,
+    "critical-threshold": 80,
+    "on-click": "foot btop"
+  },
+  "idle_inhibitor": {
+    "format": "<span font='12'>|{icon} </span>",
+    "format-icons": {
+      "activated": "󰈈",
+      "deactivated": "󰈉"
+    }
+  },
+}

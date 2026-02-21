@@ -1,0 +1,80 @@
+/* very original css not stolen */
+
+@import "mocha.css"; /* color scheme nobody has used before */
+
+* {
+  border: none;
+  font-family: "Hack Nerd Font";
+  font-size: 16px;
+  min-height: 0;
+}
+
+#waybar {
+  border:none;
+  background-color: @crust;
+  margin: 0px 0px;
+}
+
+.modules-left, .modules-right { border-radius: 0;}
+.modules-left                 { margin-left: 0;}
+.modules-right                { margin-right: 0;}
+
+/* #waybar { background: transparent; } */
+
+#backlight, #battery, #cpu, #clock, #memory, #network, #language, #battery, #power-profiles-daemon, #pulseaudio, #custom-logo, #window, #idle_inhibitor, #temperature, #custom-power_menu, #disk {
+  background: @transparent;
+  color: @text;
+  border-radius: 0;
+  margin-top: 1;
+  margin-right: 4;
+  margin-left: 4;
+  padding: 0px 0px 0px 16px;
+  /* border: 1px solid @color1; */
+  /* border-bottom: 2px solid @color1; */
+}
+
+#workspaces { 
+  padding: 1px 1px 1px 1px;
+  margin: 0px;
+}
+
+/* 
+workspace heirarchy:
+
+>workspaces in use defined first 
+>active workspace given overlay 
+>empty workspaces recolored darker
+*/
+
+/* applies to every workspace */
+#workspaces button {
+  font-size: 5px;
+  padding: 0px 6px 0px 6px;
+  margin: 0px; 
+  color: @text;
+  border-radius: 0;
+}
+
+/* i do not know how this works but leaving to figure it out
+#workspaces button.focused { 
+  background-color: @teal;
+  color: @sapphire;
+}
+*/
+
+/* the current workspace that you are on right now */
+#workspaces button.active {
+  background-color: @text; /* maybe change to @rosewater */
+  color: @base;
+}
+
+
+#workspaces button.empty {
+  color: @overlay0;
+}
+
+
+/*#workspaces button.persistent { color: @subtext1; }
+#workspaces button.empty      { color: @overlay0; }
+#workspaces button.visible    { color: @base; }
+*/
