@@ -1,0 +1,64 @@
+
+#DARK GRUVBOX
+
+
+[colors]
+alpha=0.5
+foreground=ebdbb2
+background=282828
+regular0=282828 # black
+regular1=cc241d # red
+regular2=98971a # green
+regular3=d79921 # yellow
+regular4=458588 # blue
+regular5=b16286 # magenta
+regular6=689d6a # cyan
+regular7=a89984 # white
+bright0=928374 # bright black
+bright1=fb4934 # bright red
+bright2=b8bb26 # bright green
+bright3=fabd2f # bright yellow
+bright4=83a598 # bright blue
+bright5=d3869b # bright magenta
+bright6=8ec07c # bright cyan
+bright7=ebdbb2 # bright white
+# 16 = <256-color palette #16>
+# ...
+# 255 = <256-color palette #255>
+# selection-foreground=<inverse foreground/background>
+# selection-background=<inverse foreground/background>
+# jump-labels=<regular0> <regular3>
+# urls=<regular3>
+# scrollback-indicator=<regular0> <bright4>
+
+
+#BLACKOUT 
+
+
+#blackout colors (ugly)
+
+#[colors]
+#cursor=d5d5d5 f1f1f1
+#alpha=0.5
+#background=0b0906
+#foreground=ffffff #a2d2ff
+
+#background=000000
+
+#regular0                 = 1a1a1a
+#regular1                 = 555555
+#regular2                 = 777777
+#regular3                 = aaaaaa
+#regular4                 = 888888
+#regular5                 = 999999
+#regular6                 = bbbbbb
+#regular7                 = e0e0e0
+#bright0                  = 444444
+#bright1                  = 666666
+#bright2                  = 888888
+#bright3                  = bbbbbb
+#bright4                  = 999999
+#bright5                  = aaaaaa
+#bright6                  = cccccc
+#bright7                  = ffffff
+
